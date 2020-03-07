@@ -1,100 +1,141 @@
 .navbar {
-  @include flexbox(column, space-between, flex-start);
-  padding: 1.5em 1em;
+  width: 100%;
   background-color: #eff0f1;
-  color: #fff;
-  .brand {
-    &__title {
-      color: #111;
+  .navbar__container {
+    max-width: 1150px;
+    margin: auto;
+    position: relative;
+    @include flexbox(column, space-between, flex-start);
+    padding: 1.5em 1em;
+    color: #fff;
+    .brand {
+      &__title {
+        color: #111;
+      }
     }
-  }
-  .nav__wrapper {
-    position: fixed;
-    width: 100%;
-    height: 100vh;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.65);
-    visibility: hidden;
-    z-index: 5;
-    transition: visibility 300ms ease-in-out;
-    .nav {
-      position: absolute;
+    .nav__wrapper {
+      position: fixed;
+      width: 100%;
+      height: 100vh;
       top: 0;
-      right: 0;
-      width: 50%;
-      height: 100%;
-      transform: translateX(100%);
-      @include flexbox(column, center, center);
-      background-color: #eff0f1;
-      z-index: 6;
-      transition: transform 300ms ease-in-out;
-      &__item {
-        padding: 1.5em 0;
-      }
-      &__link {
-        color: #111;
-        font-weight: 600;
-      }
-    }
-  }
-  .icons {
-    @include flexbox(row, space-between, center);
-    position: absolute;
-    right: 1em;
-    width: 100px;
-    .cart {
-      position: relative;
-      .shopping-cart-icon {
-        color: #111;
-        font-size: 1.1rem;
-        cursor: pointer;
-      }
-      .badge {
-        background-color: #111;
-        width: 19px;
-        height: 19px;
-        border-radius: 50%;
+      left: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.65);
+      visibility: hidden;
+      z-index: 5;
+      transition: visibility 300ms ease-in-out;
+      .nav {
         position: absolute;
-        top: -7px;
-        right: -17px;
+        top: 0;
+        right: 0;
+        width: 50%;
+        height: 100%;
+        transform: translateX(100%);
+        @include flexbox(column, center, center);
+        background-color: #eff0f1;
+        z-index: 6;
+        transition: transform 300ms ease-in-out;
+        &__item {
+          padding: 1.5em 0;
+        }
+        &__link {
+          color: #111;
+          font-weight: 600;
+        }
+      }
+    }
+    .icons {
+      @include flexbox(row, space-between, center);
+      position: absolute;
+      right: 1em;
+      width: 90px;
+      .cart {
+        position: relative;
+        .shopping-cart-icon {
+          color: #111;
+          font-size: 1.1rem;
+          cursor: pointer;
+        }
+        .badge {
+          background-color: #111;
+          width: 19px;
+          height: 19px;
+          border-radius: 50%;
+          position: absolute;
+          top: -7px;
+          right: -17px;
+          @include flexbox(row, center, center);
+          color: #fff;
+          font-size: 0.9rem;
+          line-height: 0.9em;
+          font-weight: 600;
+        }
+      }
+      .hamburger {
+        cursor: pointer;
+        z-index: 7;
+        &__line {
+          background-color: #111;
+          width: 28px;
+          height: 3px;
+          margin-bottom: 4px;
+          transition: all 300ms ease-out;
+        }
+      }
+    }
+    .overlay {
+      visibility: visible;
+      & .nav {
+        transform: translateX(0);
+      }
+    }
+    .hamburger-trans {
+      & .hamburger__line:nth-child(1) {
+        -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+        transform: rotate(-45deg) translate(-5px, 5px);
+      }
+      & .hamburger__line:nth-child(2) {
+        opacity: 0;
+      }
+      & .hamburger__line:nth-child(3) {
+        -webkit-transform: rotate(45deg) translate(-8px, -8px);
+        transform: rotate(45deg) translate(-5px, -5px);
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .navbar {
+    .navbar__container {
+      padding: 1.5em 2em;
+      @include flexbox(row, flex-start, center);
+      .nav__wrapper {
+        position: relative;
+        visibility: visible;
+        width: initial;
+        height: initial;
+        margin: auto;
+        .nav {
+          position: relative;
+          transform: translateX(0);
+          @include flexbox(row, center, center);
+          width: initial;
+          height: initial;
+          &__item {
+            padding: 0;
+            margin-right: 2.5em;
+          }
+        }
+      }
+      .icons{
         @include flexbox(row, center, center);
-        color: #fff;
-        font-size: 0.9rem;
-        line-height: 0.9em;
-        font-weight: 600;
+        width: 50px;
+        right: 2em;
+        .hamburger{
+          display: none;
+        }
       }
-    }
-    .hamburger {
-      cursor: pointer;
-      z-index: 7;
-      &__line {
-        background-color: #111;
-        width: 28px;
-        height: 3px;
-        margin-bottom: 4px;
-        transition: all 300ms ease-out;
-      }
-    }
-  }
-  .overlay {
-    visibility: visible;
-    & .nav {
-      transform: translateX(0);
-    }
-  }
-  .hamburger-trans {
-    & .hamburger__line:nth-child(1) {
-      -webkit-transform: rotate(-45deg) translate(-9px, 6px);
-      transform: rotate(-45deg) translate(-5px, 5px);
-    }
-    & .hamburger__line:nth-child(2) {
-      opacity: 0;
-    }
-    & .hamburger__line:nth-child(3) {
-      -webkit-transform: rotate(45deg) translate(-8px, -8px);
-      transform: rotate(45deg) translate(-5px, -5px);
     }
   }
 }
