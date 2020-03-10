@@ -4,3 +4,26 @@
   justify-content: $justify;
   align-items: $align;
 }
+.input-text{
+  width: 250px;
+  padding: 0.7em 3em 0.7em 0.5em;
+  margin-right: 1em;
+  background-color: transparent;
+  border: 1px solid #6b6b6b;
+  color: #fff;
+  font-size: 0.8rem;
+  &::placeholder{
+    color: #bbb;
+    text-transform: uppercase;
+  }
+}
+.btn{
+  padding: 1em 2em;
+  border: none;
+  background-color: #fff;
+  color: #111;
+  font-weight: 600;
+  font-size: 0.7rem;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+}

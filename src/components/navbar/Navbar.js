@@ -8,8 +8,12 @@ function Navbar() {
   const handleNav = e => {
     if (e.target.classList.contains("overlay")) {
       setToggleNav(false);
+    } else if (
+      e.target.classList.contains("hamburger") ||
+      e.target.classList.contains("hamburger__line")
+    ) {
+      setToggleNav(!toggleNav);
     }
-    setToggleNav(!toggleNav);
   };
 
   return (
